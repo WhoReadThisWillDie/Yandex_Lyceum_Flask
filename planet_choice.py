@@ -95,5 +95,38 @@ def results(nickname, level, rating):
                     </html>'''
 
 
+@app.route('/choice/<planet_name>')
+def choice(planet_name):
+    list_ = []
+    if planet_name == 'Марс':
+        list_ = ['Эта планета близка к Земле', 'На ней есть вода и атмосфера', 'Наконец, она просто красива!']
+    elif planet_name == 'Земля':
+        list_ = ['Шучу, ха-ха', 'Ну а что, зачем нам куда-то улетать?', 'Нам и здесь отлично живётся!']
+    elif planet_name == 'Венера':
+        list_ = ['Эта планета близка к Земле и схожа с ней по размеру', 'Лететь ближе, чем до Марса',
+                 'Мы можем создать там условия, подходящие для жизни человека']
+    return f'''<!doctype html>
+                    <html lang="en">
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+                            <title>Варианты выбора</title>
+                        </head>
+                        <body>
+                            <h1>Мое предложение: {planet_name}</h1>
+                            <div class='alert alert-primary' role='alert'>
+                                {list_[0]}
+                            </div>
+                            <div class='alert alert-warning' role='alert'>
+                                {list_[1]}
+                            </div>
+                            <div class='alert alert-success' role='alert'>
+                                {list_[2]}
+                            </div>
+                        </body>
+                    </html>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
