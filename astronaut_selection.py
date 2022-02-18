@@ -253,7 +253,7 @@ def astronaut_selection():
         print(request.form['about'])
         print(request.form['file'])
         print(request.form['accept'])
-        return "Форма отправлена"
+        return "Анкета отправлена"
 
 
 if __name__ == '__main__':
