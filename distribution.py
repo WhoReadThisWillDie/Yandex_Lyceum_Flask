@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -47,6 +47,11 @@ class LoginForm(FlaskForm):
 def login_form():
     form = LoginForm()
     return render_template('login_form.html', form=form)
+
+
+@app.route('/distribution')
+def distribution():
+    return render_template('distribution.html')
 
 
 if __name__ == '__main__':
