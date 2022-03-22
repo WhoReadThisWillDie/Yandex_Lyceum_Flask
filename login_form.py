@@ -1,6 +1,10 @@
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 @app.route('/<title>')
@@ -29,6 +33,20 @@ def auto_answer():
     check = True
     return render_template('auto_answer.html', surname=surname, name=name, education=education, profession=profession,
                            gender=gender, motivation=motivation, check=check)
+
+
+class LoginForm(FlaskForm):
+    id = StringField('Id астронавта', validators=[DataRequired()])
+    password = PasswordField('Пароль астронавта', validators=[DataRequired()])
+    cap_id = StringField('Id капитана', validators=[DataRequired()])
+    cap_password = PasswordField('Пароль капитана', validators=[DataRequired()])
+    submit = SubmitField('Доступ')
+
+
+@app.route('/login')
+def login_form():
+    form = LoginForm()
+    return render_template('login_form.html', form=form)
 
 
 if __name__ == '__main__':
