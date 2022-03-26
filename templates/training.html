@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if prof == 'врач' %}
+        <h3 align="center">Научные симуляторы</h3>
+        <img src="{{ url_for('static', filename='img/scientist.png') }}" class="rounded mx-auto d-block">
+    {% elif prof == 'инженер' %}
+        <h3 align="center">Инженерные симуляторы</h3>
+        <img src="{{ url_for('static', filename='img/engineer.png') }}" class="rounded mx-auto d-block">
+    {% endif %}
+{% endblock %}
